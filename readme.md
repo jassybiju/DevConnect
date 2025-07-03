@@ -144,3 +144,37 @@ Organized folder structure
 Environment-based config
 
 "# DevConnect" 
+```
+
+# Error resolving caused due to session 
+```bash
+const logout = (req , res)=>{
+   console.log(1)
+        req.session.destroy((err)=>{
+            //TODO
+            if(err){
+                console.log(`Logout error : ${err}`)
+                return res.status(500).send('Could not logo ut')
+            }
+            res.clearCookie('connect.sid',{
+                path:'/',
+                httpOnly : true,
+                sameSite : 'lax',
+                secure : false,
+            })
+            res.redirect('/')
+        })
+        
+    
+}
+
+const getDashboard = async(req, res) => {
+    const userData =  await User.findOne({email : req.session.userId})
+// * ADDED BY TECCH SUPPORT 
+// //TODO do understand that
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+
+    res.render('dashboard', {user : userData })
+}
+
+```
