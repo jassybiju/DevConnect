@@ -1,0 +1,38 @@
+<%-include("header")%>
+
+<!-- Navbar -->
+
+
+<section class=" px-4 sm:px-6 lg:px-8 bg-slate-900 h-screen flex items-center justify-center flex-col">
+    <a href="/" class=" w-full max-w-xl text-slate-50 opacity-70 my-5 hover:opacity-100"><svg class="inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left h-4 w-4" data-lov-id="src/pages/Register.tsx:41:10" data-lov-name="ArrowLeft" data-component-path="src/pages/Register.tsx" data-component-line="41" data-component-file="Register.tsx" data-component-name="ArrowLeft" data-component-content="%7B%22className%22%3A%22h-4%20w-4%22%7D"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+  Back to Home</a>
+  <div class="w-full h-fit max-w-xl bg-slate-800 p-8 rounded-xl shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-cyan-400 mb-6">Create Your Account</h2>
+    <form action="/register" method="POST" class="space-y-6">
+      <div>
+        <label for="name" class="block text-slate-200 mb-1">Name</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-1 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+      </div>
+      <div>
+        <label for="email" class="block text-slate-200 mb-1">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+      </div>
+      <div>
+        <label for="password" class="block text-slate-200 mb-1">Password</label>
+        <input type="password" id="password" name="password" required class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+      </div>
+      <div>
+        <label for="confirm" class="block text-slate-200 mb-1">Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" required class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md text-slate-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+      </div>
+      <button type="submit" class="w-full py-2 px-4 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition duration-300">
+        Register
+      </button>
+    </form>
+    <p class="mt-6 text-center text-slate-400">
+      Already have an account?
+      <a href="/login" class="text-cyan-400 hover:underline">Login here</a>
+    </p>
+  </div>
+</section>
+<%-include("footer")%>

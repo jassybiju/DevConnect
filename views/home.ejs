@@ -1,0 +1,58 @@
+<%-include("header")%>
+    <!-- Navbar -->
+    <header class="bg-[#0a0628] border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="/" class="text-2xl font-bold text-cyan-400">DevConnector</a>
+                <nav class="flex gap-4">
+                    <a href="/register" class="px-6 py-3 bg-cyan-500 text-slate-900 font-semibold rounded-lg hover:bg-cyan-400 transition duration-300 flex">Sign Up</a>
+                    <a href="/login" class="text-slate-100 hover:text-cyan-300 transition duration-200 self-center h-fit">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section
+        class="flex flex-col items-center justify-center text-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 to-slate-800">
+        <h1
+            class="text-5xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
+            DevConnector
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl">
+            A social network for developers to showcase skills and connect
+        </p>
+        <div class="flex gap-4 mb-16">
+            <a href="/register"
+                class="px-6 py-3 bg-cyan-500 text-slate-900 font-semibold rounded-lg hover:bg-cyan-400 transition duration-300 flex">
+                    Get Started
+                <svg class="align-item-center ml-3"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-arrow-right h-5 w-5" data-lov-id="src/pages/Landing.tsx:41:28"
+                    data-lov-name="ArrowRight" data-component-path="src/pages/Landing.tsx" data-component-line="41"
+                    data-component-file="Landing.tsx" data-component-name="ArrowRight"
+                    data-component-content="%7B%22className%22%3A%22h-5%20w-5%22%7D">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                </svg></a>
+            <a href="/login"
+                class="px-6 py-3 border border-slate-600 text-slate-100 rounded-lg hover:bg-slate-700 transition duration-300">Login</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
+            <div class="bg-slate-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border-[#0a0628] hover:border-3">
+                <h3 class="text-xl font-semibold text-cyan-300 mb-2">Showcase Your Skills</h3>
+                <p class="text-slate-400">Create a developer profile, highlight your stack, and stand out to others.</p>
+            </div>
+            <div class="bg-slate-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border-[#0a0628] hover:border-3">
+                <h3 class="text-xl font-semibold text-cyan-300 mb-2">Connect With Peers</h3>
+                <p class="text-slate-400">Follow other developers, share experiences, and grow your network.</p>
+            </div>
+            <div class="bg-slate-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border-[#0a0628] hover:border-3 relative">
+                <h3 class="text-xl font-semibold text-cyan-300 mb-2">Track Experience</h3>
+                <p class="text-slate-400">Document your career journey and make it easier to showcase to recruiters.</p>
+            </div>
+        </div>
+    </section>
+
+    <%-include("footer")%>

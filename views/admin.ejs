@@ -1,0 +1,61 @@
+<%-include('header')%>
+
+<div class="min-h-screen flex bg-slate-900 text-slate-100">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-slate-950 p-6 flex flex-col justify-between">
+    <div>
+      <h2 class="text-2xl font-bold text-cyan-400 mb-6">Admin Panel</h2>
+      <nav class="space-y-4">
+        <a href="/admin" class="block text-cyan-300 font-semibold">Manage Users</a>
+        <a href="/dashboard" class="block hover:text-cyan-300">User Dashboard</a>
+      </nav>
+    </div>
+    <div>
+      <form action="/logout" method="POST">
+        <button type="submit" class="w-full mt-6 px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-md transition duration-300">
+          Logout
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8">
+    <h1 class="text-3xl font-bold text-cyan-300 mb-6">User Management</h1>
+
+    <table class="w-full bg-slate-800 rounded-xl overflow-hidden shadow">
+      <thead>
+        <tr class="text-left text-cyan-400 border-b border-slate-700">
+          <th class="p-4">Name</th>
+          <th class="p-4">Email</th>
+          <th class="p-4">Status</th>
+          <th class="p-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-slate-700 hover:bg-slate-700">
+          <td class="p-4">John Developer</td>
+          <td class="p-4">john@example.com</td>
+          <td class="p-4"><span class="text-green-400">Active</span></td>
+          <td class="p-4 space-x-2">
+            <button class="px-3 py-1 bg-yellow-400 text-slate-900 font-medium rounded hover:bg-yellow-300">Edit</button>
+            <button class="px-3 py-1 bg-red-500 text-white font-medium rounded hover:bg-red-400">Block</button>
+            <button class="px-3 py-1 bg-blue-500 text-white font-medium rounded hover:bg-blue-400">Remove</button>
+          </td>
+        </tr>
+        <!-- Repeat this row for more users -->
+      </tbody>
+    </table>
+
+    <div class="mt-8">
+      <h2 class="text-xl font-semibold mb-4">Add New User</h2>
+      <form action="/admin/add-user" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="text" name="name" placeholder="Name" class="p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400">
+        <input type="email" name="email" placeholder="Email" class="p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400">
+        <input type="password" name="password" placeholder="Password" class="p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400">
+        <button type="submit" class="md:col-span-3 w-full py-2 mt-2 bg-cyan-500 text-slate-900 font-semibold rounded-md hover:bg-cyan-400 transition duration-300">Add User</button>
+      </form>
+    </div>
+  </main>
+</div>
+<%-include('footer')%>

@@ -1,0 +1,66 @@
+<%-include("header")%>
+<div class="min-h-screen flex bg-slate-900 text-slate-100">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-slate-950 p-6 flex flex-col justify-between">
+    <div>
+      <h2 class="text-2xl font-bold text-cyan-400 mb-6">DevConnector</h2>
+      <nav class="space-y-4">
+        <a href="/dashboard" class="block text-cyan-300 font-semibold">Profile</a>
+       
+        <a href="/edit" class="block hover:text-cyan-300">Edit Profile</a>
+      </nav>
+    </div>
+    <div>
+      <form action="/logout" method="POST">
+        <button type="submit" class="w-full mt-6 px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-md transition duration-300">
+          Logout
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8">
+    <h1 class="text-3xl font-bold text-cyan-300 mb-6">Welcome, <%= locals.user.name ? user.name : "asdff"%></h1>
+
+    <!-- Profile Card -->
+    <div class="bg-slate-800 rounded-xl p-6 mb-6 shadow-md">
+      <div class="flex items-center gap-4">
+        <img src="/images/avatar-placeholder.png" alt="Avatar" class="w-20 h-20 rounded-full border-2 border-cyan-400" />
+        <div>
+          <h2 class="text-xl font-semibold"><%= locals.user.name ? user.name : "asdff"%></h2>
+          <p class="text-slate-400"><%= locals.user.bio ? user.bio : "Bio not given...." %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div class="bg-slate-800 p-4 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-cyan-300">Projects</h3>
+        <p class="text-2xl font-bold"><%= locals.user.projects ? user.projects : "-" %></p>
+      </div>
+      <div class="bg-slate-800 p-4 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-cyan-300">Followers</h3>
+        <p class="text-2xl font-bold"><%= locals.user.followers ? user.followers : "-" %></p>
+      </div>
+      <div class="bg-slate-800 p-4 rounded-lg shadow">
+        <h3 class="text-lg font-medium text-cyan-300">Experience</h3>
+        <p class="text-2xl font-bold"><%= locals.user.experience ? user.experience+'yrs' : "-" %> </p>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="bg-slate-800 p-6 rounded-xl shadow">
+      <h3 class="text-xl font-semibold text-cyan-300 mb-4">Recent Activity</h3>
+      <ul class="space-y-3 text-slate-400">
+        <li>➤ Updated profile information</li>
+        <li>➤ Added new job at Tech Corp</li>
+        <li>➤ Connected with DevAnna</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+
+<%-include('footer')%>
