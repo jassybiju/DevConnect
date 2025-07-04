@@ -9,13 +9,15 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import nocache from "nocache";
 import middleware from './middlewares/middleware.js'
+import flash from 'connect-flash'
+import morgan from "morgan";
 
 //* config
 dotenv.config()
 const app = express();
 const PORT = process.env.PORT || 5000
 
-app.use(nocache())
+// app.use(nocache())
 
 // * getting Dirname
 const __filename = fileURLToPath(import.meta.url)
@@ -23,11 +25,8 @@ const __dirname = path.dirname(__filename)
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use((req, res, next)=>{
-    res.set('Cache-Control', 'no-store')
-    next()
-}
-)
+
+app.use(flash())
 
 app.use(session({
     secret : process.env.SESSION_SECRET,
@@ -43,10 +42,17 @@ app.use(session({
 }))
 
 
+
 //* styles 
 app.use('/assets',express.static(__dirname + '/static'))
 app.set('view engine', 'ejs')
 
+app.use((req, res ,next)=>{
+    res.locals.w = req.flash('error')
+    next()
+})
+
+app.use(morgan('dev'))
 
 app.use('/',userRouter) //userRouter
 app.use('/admin',adminRouter) //adminRouter

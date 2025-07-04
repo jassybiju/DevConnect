@@ -6,7 +6,7 @@
       <h2 class="text-2xl font-bold text-cyan-400 mb-6">DevConnector</h2>
       <nav class="space-y-4">
         <a href="/dashboard" class="block text-cyan-300 font-semibold">Profile</a>
-       
+       <% if(isAdmin) { %>  <a href="/admin" class="block text-cyan-300 ">Admin</a> <% }   %> 
         <a href="/edit" class="block hover:text-cyan-300">Edit Profile</a>
       </nav>
     </div>
@@ -29,7 +29,7 @@
         <img src="/images/avatar-placeholder.png" alt="Avatar" class="w-20 h-20 rounded-full border-2 border-cyan-400" />
         <div>
           <h2 class="text-xl font-semibold"><%= locals.user.name ? user.name : "asdff"%></h2>
-          <p class="text-slate-400"><%= locals.user.bio ? user.bio : "Bio not given...." %></p>
+          <p class="text-slate-400"><%= locals.user.Bio ? user.Bio : "Bio not given...." %></p>
         </div>
       </div>
     </div>
