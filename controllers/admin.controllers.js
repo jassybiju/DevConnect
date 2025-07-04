@@ -8,7 +8,8 @@ const getAdminDashboard = async (req, res) => {
         if (req.query.search) {
             users = await User.find({
                 $or: [
-                    { name: { $regex: req.query.search, $options: 'i' } }
+                    { name: { $regex: req.query.search, $options: 'i' } },
+                    { email: { $regex: req.query.search, $options: 'i' } }
                 ]
             })
         }
@@ -32,7 +33,7 @@ const addUser = async (req, res) => {
         if (user) return res.send('User Already Exists');
         const { name, email, password } = req.body
         const newUser = new User({ name, email, password })
-        newUser.save()
+        await newUser.save()
         res.redirect('/admin')
     } catch (error) {
         res.send(`Error : ${error.message}`)
@@ -88,7 +89,24 @@ const editUser = async (req, res) => {
     }
 }
 
+const makeAdmin = async (req, res) => {
+    const userId = req.params.id
+    try {
+        const user = await User.findOne({ email: userId })
+        if (user.roles.includes('admin')) {
+            user.roles.splice(user.roles.indexOf('array'), 1)
+            console.log(user.roles)
+        } else {
+            user.roles.push('admin')
+        }
+        await user.save()
+        
+        
+        res.redirect('/admin')
+    } catch (error) {
 
+    }
+}
 
 export default {
     getAdminDashboard,
@@ -96,5 +114,6 @@ export default {
     blockUser,
     getEditUser,
     editUser,
+    makeAdmin
 
 }

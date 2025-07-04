@@ -23,8 +23,16 @@ const getDashboard = async (req, res) => {
 }
 
 
-const getEditUser = (req, res) => {
-    res.render('userEdit', { isAdmin: req.session.roles.includes('admin') })
+const getEditUser = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.session.userId })
+        console.log(req.session)
+        res.render('userEdit', { isAdmin: req.session.roles.includes('admin') , user : user })
+
+    } catch (error) {
+        res.send(`Error : ${error.message }`)
+    }
+
 }
 
 const postLogin = async (req, res) => {
@@ -89,7 +97,7 @@ const postEditUser = async (req, res) => {
         let user = await User.findOneAndUpdate({ email: req.session.userId }, req.body, { new: true, runValidators: true })
         const newUser = await User.find({ email: req.session.userId })
 
-        res.json(user, newUser)
+        res.redirect('/dashboard')
     } catch (error) {
         res.status(400).send('error :' + error.message)
     }

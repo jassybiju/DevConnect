@@ -6,8 +6,8 @@
       <h2 class="text-2xl font-bold text-cyan-400 mb-6">DevConnector</h2>
       <nav class="space-y-4">
         <a href="/dashboard" class="block hover:text-cyan-300">Profile</a>
-        <% if(isAdmin) { %> <a href="/admin" class="block hover:text-cyan-300">Admin</a> <% } %>
-        <a href="/edit-profile" class="block text-cyan-300 font-semibold">Edit Profile</a>
+        <% if(isAdmin) { %> <%=isAdmin%> <a href="/admin" class="block hover:text-cyan-300">Admin</a> <% } %>
+        <a href="/edit" class="block text-cyan-300 font-semibold">Edit Profile</a>
       </nav>
     </div>
     <div>
@@ -26,24 +26,24 @@
     <form action="/edit" method="POST" class="space-y-6 max-w-3xl">
       <div>
         <label for="bio" class="block mb-1">Bio</label>
-        <textarea id="bio" name="Bio" rows="4" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400"></textarea>
+        <input id="bio" name="Bio" rows="4" value="<%=user.Bio%>" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400"></input>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label for="projects" class="block mb-1">projects</label>
-          <input type="text" id="projects" name="projects" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
+          <input type="text" id="projects" name="projects" value="<%=user.projects%>" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
         </div>
 
         <div>
           <label for="experience" class="block mb-1">experience</label>
-          <input type="text" id="experience" name="experience" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
+          <input type="text" id="experience" value="<%=user.experience%>" name="experience" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
         </div>
       </div>
 
       <div>
         <label for="followers" class="block mb-1">followers (comma separated)</label>
-        <input type="text" id="followers" name="followers" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
+        <input type="text" id="followers" value="<%=user.followers%>" name="followers" class="w-full p-3 rounded-md bg-slate-800 border border-slate-600 text-slate-100 focus:ring-2 focus:ring-cyan-400" />
       </div>
 
       <!-- <div>

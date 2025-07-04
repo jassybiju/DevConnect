@@ -60,8 +60,11 @@
             <a href="admin/block/<%=user.email%>"><button class="px-3 py-1 bg-red-500 text-white font-medium rounded hover:bg-red-400">Block</button></a>
               <% } %>
 
-            
-            <a href="admin/block/<%=user.email%>"><button class="px-3 py-1 bg-blue-500 text-white font-medium rounded hover:bg-blue-400">Remove</button></a>
+            <% if(user.roles.includes('admin')){ %>
+            <a href="admin/tAdmin/<%=user.email%>"><button class="px-3 py-1 bg-blue-500 text-white font-medium rounded hover:bg-blue-400">Remove Admin</button></a>
+            <% }else { %>
+              <a href="admin/tAdmin/<%=user.email%>"><button class="px-3 py-1 bg-blue-500 text-white font-medium rounded hover:bg-blue-400">Make Admin</button></a>
+              <% } %>
           </td>
         </tr>
         <% } %>

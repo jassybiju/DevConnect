@@ -9,7 +9,7 @@ route.get('/',userController.getHome)  //home page
 route.get('/register',userController.getRegister) // user register
 route.get('/login',middleware.redirectIfAuthenticated,  userController.getLogin)
 route.get('/dashboard', middleware.nocacheMiddleWare ,  middleware.AuthMiddleware,middleware.authorizeRoles('user'),middleware.AuthMiddleware,  userController.getDashboard)
-route.get('/edit',middleware.AuthMiddleware, userController.getEditUser)
+route.get('/edit',middleware.roleChanged,middleware.nocacheMiddleWare, middleware.AuthMiddleware, userController.getEditUser)
 
 
 
